@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20853d2c6641f6e43803ff6b0bc8a717, type: 3}
+  m_Name: SettingGame
+  m_EditorClassIdentifier: 
+  playerBalance: 1000
+  dealerBalane: 5304
+  totalBet: 0
+  playerBet: 20
+  maxBet: 500
+  timeActive_mainText: 1
+  title: "\u0441\u0432\u043E\u0434 \u043F\u0440\u0430\u0432\u0438\u043B"
+  textRules: "\u043F\u0440\u0430\u0432\u0438\u043B\u0430 \u0438\u0433\u0440\u044B\n-\n-\n-
+    \u0438 \u0442\u0434"
+  bgAudio: {fileID: 8300000, guid: 3b3c5cdc9148e44499803382bd25224a, type: 3}
+  deal: {fileID: 8300000, guid: 19164302cf52b9b47b7c1d610f252517, type: 3}
+  hitAudio: {fileID: 8300000, guid: 19164302cf52b9b47b7c1d610f252517, type: 3}
+  standAudio: {fileID: 8300000, guid: 19164302cf52b9b47b7c1d610f252517, type: 3}
+  winAudio: {fileID: 8300000, guid: f2ce0f7c7649fec4caa59aac0a5ae9cd, type: 3}
+  loseAudio: {fileID: 8300000, guid: d8abc6718265f0e49bbb97ee008acdae, type: 3}
+  betAudio: {fileID: 8300000, guid: 19164302cf52b9b47b7c1d610f252517, type: 3}
+  drawAudio: {fileID: 8300000, guid: 430ac3863af826d4dac41066222a1842, type: 3}
+  emptyBalanceAudio: {fileID: 8300000, guid: 95942f08c74bcf946a0e3c8dd18f4cd6, type: 3}
