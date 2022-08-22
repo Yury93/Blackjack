@@ -205,7 +205,12 @@ public class GameTimeLine : MonoBehaviour
             cashText.text = "$" + playerScript.GetMoney().ToString();
             ButtonBlocker.ButtonSetActive(bet, standBtn, hitBtn, dealBtn);
             betBtnAnimator.ButtonEnable();
-            
+
+            if (playerScript.GetMoney() <= 0)
+            {
+                OnEmptyBalance?.Invoke();
+            }
+
         }
 
     }

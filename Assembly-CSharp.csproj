@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\ButtonBlocker.cs" />
     <Compile Include="Assets\Scripts\TimeLineSetting.cs" />
+    <Compile Include="Assets\Scripts\DialogWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
