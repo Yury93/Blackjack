@@ -3003,7 +3003,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Paw: 0\u044B"
+  m_Text: 'Paw: 0'
 --- !u!222 &832116530
 CanvasRenderer:
   m_ObjectHideFlags: 0
