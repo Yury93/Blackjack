@@ -98,7 +98,7 @@ public class GameTimeLine : MonoBehaviour
     {
         if (playerBet <= playerScript.GetMoney() && 0 < playerScript.GetMoney() && (totalBet / 2) <= maxBet)
         {
-            totalBet = playerBet * 2;
+            //totalBet = totalBet * 2;
             betsText.text = "Bets: $" + totalBet.ToString();
             dealerScript.AdjustMoney(-(playerBet));
             print(playerBet);
