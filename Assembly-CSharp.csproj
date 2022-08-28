@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\ButtonAnimator.cs" />
     <Compile Include="Assets\Scripts\CardScript.cs" />
     <Compile Include="Assets\Scripts\DeckScript.cs" />
+    <Compile Include="Assets\Scripts\SettingDialog.cs" />
     <Compile Include="Assets\Scripts\DialogWindow.cs" />
     <Compile Include="Assets\Scripts\InfoWindow.cs" />
     <Compile Include="Assets\Scripts\AudioService.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\ButtonBlocker.cs" />
     <Compile Include="Assets\Scripts\TimeLineSetting.cs" />
-    <Compile Include="Assets\Scripts\SettingDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

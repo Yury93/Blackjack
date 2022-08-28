@@ -99,7 +99,7 @@ public class GameTimeLine : MonoBehaviour
         if (playerBet <= playerScript.GetMoney() && 0 < playerScript.GetMoney() && (totalBet / 2) <= maxBet)
         {
             //totalBet = totalBet * 2;
-            betsText.text = "Bets: $" + totalBet.ToString();
+            betsText.text = " $" + totalBet.ToString();//bet txt
             dealerScript.AdjustMoney(-(playerBet));
             print(playerBet);
             cashText.text = "$" + playerScript.GetMoney().ToString();
@@ -201,7 +201,7 @@ public class GameTimeLine : MonoBehaviour
             bet = false;
             print("Конец раунда");
             cashText.text = "$" + playerScript.GetMoney().ToString();
-            betsText.text = "Bets: $" + totalBet.ToString();
+            betsText.text = " $" + totalBet.ToString();//bet txt
             cashText.text = "$" + playerScript.GetMoney().ToString();
             ButtonBlocker.ButtonSetActive(bet, standBtn, hitBtn, dealBtn);
             betBtnAnimator.ButtonEnable();
@@ -229,7 +229,7 @@ public class GameTimeLine : MonoBehaviour
            
             cashText.text = "$" + playerScript.GetMoney().ToString();
             totalBet += (playerBet * 2);
-            betsText.text = "Bets: $" + totalBet.ToString();
+            betsText.text = " $" + totalBet.ToString();//bet txt
             bet = true;
 
             ButtonBlocker.ButtonSetActive(true,dealBtn);
