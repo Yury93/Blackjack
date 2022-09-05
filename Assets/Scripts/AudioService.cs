@@ -12,7 +12,8 @@ public class AudioService : MonoBehaviour
          winAudio, loseAudio, betAudio, drawAudio, emptyBalanceAudio;
 
      [SerializeField] AudioSource button, button2, button3, gameEventsTimeLine, bg;
-
+    [SerializeField] private AudioListener audioListener;
+    [SerializeField] private Sprite iconAudioOnEnabled, iconAudioOffEnabled;
     private void Awake()
     {
         
