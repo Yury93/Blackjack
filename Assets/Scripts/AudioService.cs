@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioService : MonoBehaviour
 {
@@ -14,11 +15,24 @@ public class AudioService : MonoBehaviour
      [SerializeField] AudioSource button, button2, button3, gameEventsTimeLine, bg;
     [SerializeField] private AudioListener audioListener;
     [SerializeField] private Sprite iconAudioOnEnabled, iconAudioOffEnabled;
+    [SerializeField] private Button buttonAudioActive;
     private void Awake()
     {
-        
-
         Initialized();
+        buttonAudioActive.onClick.AddListener(AudioHandlerEnabled);
+    }
+    public void AudioHandlerEnabled()
+    {
+        if(audioListener.enabled)
+        {
+            audioListener.enabled = false;
+            buttonAudioActive.GetComponent<Image>().sprite = iconAudioOffEnabled;
+        }
+        else
+        {
+            audioListener.enabled = true;
+            buttonAudioActive.GetComponent<Image>().sprite = iconAudioOnEnabled;
+        }
     }
     private void Start()
     {
