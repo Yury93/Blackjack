@@ -7,7 +7,7 @@ public class CardScript : MonoBehaviour
 {
     // Value of card, 2 of clubs = 2, etc
     public int value = 0;
-
+    public Sprite backSprite;
     public int GetValueOfCard()
     {
         return value;
@@ -33,5 +33,9 @@ public class CardScript : MonoBehaviour
         Sprite back = GameObject.Find("Deck").GetComponent<DeckScript>().GetCardBack();
         gameObject.GetComponent<SpriteRenderer>().sprite = back;
         value = 0;
+    }
+    public void SetBackSpriteCard()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = backSprite;
     }
 }

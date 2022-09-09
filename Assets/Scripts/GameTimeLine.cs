@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -275,6 +276,24 @@ public class GameTimeLine : MonoBehaviour
         mainText.gameObject.SetActive(false);
 
 
+        playerScript.ResetHand();
+        dealerScript.ResetHand();
+        GameObject.Find("Deck").GetComponent<DeckScript>().Shuffle();
 
+        for (int i = 0; i < playerScript.hand.Length; i++)
+        {
+            playerScript.hand[i].GetComponent<CardScript>().SetBackSpriteCard();
+            if (i <= 1)
+                playerScript.hand[i].GetComponent<Renderer>().enabled = true;
+        }
+        for (int i = 0; i < dealerScript.hand.Length; i++)
+        {
+            dealerScript.hand[i].GetComponent<CardScript>().SetBackSpriteCard();
+            if(i<=1)
+            dealerScript.hand[i].GetComponent<Renderer>().enabled = true;
+        }
+        hideCard.GetComponent<Renderer>().enabled = true;
+        scoreText.text = "Paw: " + 0;
+        dealerScoreText.text = "Paw: " + 0;
     }
 }
