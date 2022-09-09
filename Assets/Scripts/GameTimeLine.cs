@@ -210,7 +210,7 @@ public class GameTimeLine : MonoBehaviour
         //    roundOver = false;
         //}
         // Set ui up for next move / hand / turn
-       
+        dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
         if (roundOver)
         {
 
