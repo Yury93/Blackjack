@@ -229,7 +229,7 @@ public class GameTimeLine : MonoBehaviour
             betsText.text = " $" + totalBet.ToString();//bet txt
             cashText.text = "$" + playerScript.GetMoney().ToString();
             ButtonBlocker.ButtonSetActive(bet, standBtn, hitBtn, dealBtn);
-            betBtnAnimator.ButtonEnable();
+            
 
             if (playerScript.GetMoney() <= 0)
             {
@@ -270,8 +270,8 @@ public class GameTimeLine : MonoBehaviour
 
     IEnumerator CorEmptyBetMainTxt()
     {
-        yield return new WaitForSeconds(timeActive_mainText);
-        mainText.text = "We need to make" + "\n" + " a new bet!";
+        //yield return new WaitForSeconds(timeActive_mainText);
+        //mainText.text = " ";
         yield return new WaitForSeconds(timeActive_mainText);
         mainText.gameObject.SetActive(false);
 
@@ -295,5 +295,7 @@ public class GameTimeLine : MonoBehaviour
         hideCard.GetComponent<Renderer>().enabled = true;
         scoreText.text = "Paw: " + 0;
         dealerScoreText.text = "Paw: " + 0;
+        yield return new WaitForSeconds(0.5f);
+        betBtnAnimator.ButtonEnable();
     }
 }
