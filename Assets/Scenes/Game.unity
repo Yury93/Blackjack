@@ -266,11 +266,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4854860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -392.38403, y: 70.06858, z: -12612.345}
+  m_LocalScale: {x: 140.13716, y: 140.13716, z: 140.13716}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 2030259219}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7281024
 GameObject:
@@ -1167,7 +1167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.95999, y: 51.75}
+  m_AnchoredPosition: {x: -50.960938, y: 51.75}
   m_SizeDelta: {x: 85.33, y: 79.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221025222
@@ -1590,6 +1590,7 @@ MonoBehaviour:
   newBetChip: {fileID: 2094245138}
   hideCard: {fileID: 213205815}
   timeLineSetting: {fileID: 11400000, guid: 3962547420d8297458bf9bcb0227b773, type: 2}
+  cardDealer1: {fileID: 622943502}
 --- !u!4 &423562248
 Transform:
   m_ObjectHideFlags: 0
@@ -2265,7 +2266,7 @@ Transform:
   - {fileID: 76302731}
   - {fileID: 522244615}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560130485
 GameObject:
@@ -2874,7 +2875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -421, y: 114.499756}
+  m_AnchoredPosition: {x: -421, y: 114.5}
   m_SizeDelta: {x: 504.1089, y: 122.3147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633882926
@@ -3113,7 +3114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.18800001}
   m_AnchorMax: {x: 0, y: 0.18800001}
-  m_AnchoredPosition: {x: 29, y: -449.99994}
+  m_AnchoredPosition: {x: 29, y: -449.99997}
   m_SizeDelta: {x: 157.62012, y: 162.95001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &750869255
@@ -3414,7 +3415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -426.03003, y: -114.570435}
+  m_AnchoredPosition: {x: -426.0293, y: -114.570435}
   m_SizeDelta: {x: 265.58002, y: 86.401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850593990
@@ -3840,6 +3841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setting: {fileID: 11400000, guid: 3962547420d8297458bf9bcb0227b773, type: 2}
+  hideCardSprite: {fileID: 21300000, guid: 312e5cb3ef7a47e4586f69126c4255eb, type: 3}
   dealer: 1
   cardScript: {fileID: 1646320047}
   deckScript: {fileID: 4854861}
@@ -4264,7 +4266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -426.03003, y: -114.535034}
+  m_AnchoredPosition: {x: -426.0293, y: -114.535034}
   m_SizeDelta: {x: 265.57996, y: 86.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293202553
@@ -5720,6 +5722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setting: {fileID: 11400000, guid: 3962547420d8297458bf9bcb0227b773, type: 2}
+  hideCardSprite: {fileID: 21300000, guid: 312e5cb3ef7a47e4586f69126c4255eb, type: 3}
   dealer: 0
   cardScript: {fileID: 1646320047}
   deckScript: {fileID: 4854861}
@@ -6215,8 +6218,9 @@ RectTransform:
   - {fileID: 1898117313}
   - {fileID: 213205818}
   - {fileID: 1064139842}
+  - {fileID: 4854863}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

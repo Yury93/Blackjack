@@ -41,6 +41,7 @@ public class GameTimeLine : MonoBehaviour
     //Animations button
     private ButtonAnimator betBtnAnimator;
     public Action OnDeal, OnHit, OnStend, OnWin, OnLose, OnBet, OnDraw, OnEmptyBalance;
+    [SerializeField] private CardScript cardDealer1;
 
     private void Start()
     {
@@ -75,15 +76,24 @@ public class GameTimeLine : MonoBehaviour
             playerScript.ResetHand();
             dealerScript.ResetHand();
             // Hide deal hand score at start of deal
-            dealerScoreText.gameObject.SetActive(false);
+            //dealerScoreText.gameObject.SetActive(false);
             mainText.gameObject.SetActive(false);
-            dealerScoreText.gameObject.SetActive(false);
+            //dealerScoreText.gameObject.SetActive(false);
             GameObject.Find("Deck").GetComponent<DeckScript>().Shuffle();
             playerScript.StartHand();
             dealerScript.StartHand();
             // Update the scores displayed
             scoreText.text = "Paw: " + playerScript.handValue.ToString();
             dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
+
+            if (hideCard.GetComponent<Renderer>().enabled)
+            {
+                dealerScoreText.text = "Paw: " + (dealerScript.handValue - cardDealer1.value).ToString();
+            }
+            else
+            {
+                dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
+            }
             // Place card back on dealer card, hide card
             hideCard.GetComponent<Renderer>().enabled = true;
             // Adjust buttons visibility
@@ -93,6 +103,7 @@ public class GameTimeLine : MonoBehaviour
             standBtnText.text = "Stand";
             PlaceBet();
         }
+        //dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
     }
     public void PlaceBet()
     {
@@ -134,11 +145,24 @@ public class GameTimeLine : MonoBehaviour
 
     private void HitDealer()
     {
-        while (dealerScript.handValue < 16 && dealerScript.cardIndex < 10)
+        StartCoroutine(CorDelayGetCardDealer());
+        IEnumerator CorDelayGetCardDealer()
         {
-            dealerScript.GetCard();
-            dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
-            if (dealerScript.handValue > 20) RoundOver();
+            standBtn.interactable = false;
+            while (dealerScript.handValue < 16 && dealerScript.cardIndex < 10)
+            {
+                if (hideCard.GetComponent<Renderer>().enabled)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                    hideCard.GetComponent<Renderer>().enabled = false;
+                }
+                yield return new WaitForSeconds(0.5f);
+                dealerScript.GetCard();
+                
+                dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
+                if (dealerScript.handValue > 20) RoundOver();
+            }
+            standBtn.interactable = true;
         }
     }
 
@@ -210,9 +234,8 @@ public class GameTimeLine : MonoBehaviour
             {
                 OnEmptyBalance?.Invoke();
             }
-
         }
-
+        StartCoroutine(CorEmptyBetMainTxt());
     }
 
     // Add money to pot if bet clicked
@@ -239,9 +262,9 @@ public class GameTimeLine : MonoBehaviour
         {
             betBtnAnimator.ButtonDisabled();
             OnEmptyBalance?.Invoke();
-            StartCoroutine(CorEmptyBetMainTxt());
+            
         }
-
+    
     }
 
     IEnumerator CorEmptyBetMainTxt()
@@ -250,5 +273,8 @@ public class GameTimeLine : MonoBehaviour
         mainText.text = "We need to make" + "\n" + " a new bet!";
         yield return new WaitForSeconds(timeActive_mainText);
         mainText.gameObject.SetActive(false);
+
+
+
     }
 }

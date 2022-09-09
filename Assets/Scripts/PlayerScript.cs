@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     // --- This script is for BOTH player and dealer
     [SerializeField] private TimeLineSetting setting;
+    [SerializeField] private Sprite hideCardSprite;
     [SerializeField] private bool dealer;
     // Get other scripts
     public CardScript cardScript;   
@@ -101,4 +102,5 @@ public class PlayerScript : MonoBehaviour
         handValue = 0;
         aceList = new List<CardScript>();
     }
+  
 }
