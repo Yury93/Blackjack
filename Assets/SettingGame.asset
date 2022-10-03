@@ -17,7 +17,7 @@ MonoBehaviour:
   totalBet: 0
   playerBet: 20
   maxBet: 500
-  timeActive_mainText: 2
+  timeActive_mainText: 4
   title: "\u0441\u0432\u043E\u0434 \u043F\u0440\u0430\u0432\u0438\u043B"
   textRules: "\u043F\u0440\u0430\u0432\u0438\u043B\u0430 \u0438\u0433\u0440\u044B\n-\n-\n-
     \u0438 \u0442\u0434"
