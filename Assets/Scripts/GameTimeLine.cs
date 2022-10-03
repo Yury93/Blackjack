@@ -135,12 +135,12 @@ public class GameTimeLine : MonoBehaviour
     private void StandClicked()
     {
         OnStend?.Invoke();
-        standClicks++;
+        standClicks+=2;
         if (standClicks > 1)
         {
             RoundOver();
-        }
-        HitDealer();
+    }
+    HitDealer();
         standBtnText.text = "Call";
     }
 
@@ -150,7 +150,7 @@ public class GameTimeLine : MonoBehaviour
         IEnumerator CorDelayGetCardDealer()
         {
             standBtn.interactable = false;
-            while (dealerScript.handValue < 16 && dealerScript.cardIndex < 10)
+            while (dealerScript.handValue < 17 && dealerScript.cardIndex < 10)
             {
                 if (hideCard.GetComponent<Renderer>().enabled)
                 {

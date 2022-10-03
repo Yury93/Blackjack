@@ -23,11 +23,13 @@ public class InfoWindow : MonoBehaviour
         if (infoRead)
         {
             infoRulesGame.gameObject.SetActive(false);
+            Time.timeScale = 1F;
             infoRead = false;
         }
         else
         {
             infoRulesGame.gameObject.SetActive(true);
+            Time.timeScale = 0.0001F;
             infoRead = true;
         }
     }
