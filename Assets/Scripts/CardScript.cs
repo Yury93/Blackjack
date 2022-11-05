@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardScript : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class CardScript : MonoBehaviour
     {
         return value;
     }
+    public CardScript GetCard()
+    {
+        return this;
+    }
 
     public void SetValue(int newValue)
     {
@@ -20,22 +25,22 @@ public class CardScript : MonoBehaviour
 
     public string GetSpriteName()
     {
-        return GetComponent<SpriteRenderer>().sprite.name;
+        return GetComponent<Image>().sprite.name;
     }
 
     public void SetSprite(Sprite newSprite)
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
+        gameObject.GetComponent<Image>().sprite = newSprite;
     }
 
     public void ResetCard()
     {
         Sprite back = GameObject.Find("Deck").GetComponent<DeckScript>().GetCardBack();
-        gameObject.GetComponent<SpriteRenderer>().sprite = back;
+        gameObject.GetComponent<Image>().sprite = back;
         value = 0;
     }
     public void SetBackSpriteCard()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = backSprite;
+        gameObject.GetComponent<Image>().sprite = backSprite;
     }
 }

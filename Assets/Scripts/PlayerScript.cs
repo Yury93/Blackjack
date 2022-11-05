@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         // Get a card, use deal card to assign sprite and value to card on table
         int cardValue = deckScript.DealCard(hand[cardIndex].GetComponent<CardScript>());
         // Show card on game screen
-        hand[cardIndex].GetComponent<Renderer>().enabled = true;
+        hand[cardIndex].GetComponent<Image>().enabled = true;
         // Add card value to running total of the hand
         handValue += cardValue;
         // If value is 1, it is an ace
@@ -96,7 +97,7 @@ public class PlayerScript : MonoBehaviour
         for(int i = 0; i < hand.Length; i++)
         {
             hand[i].GetComponent<CardScript>().ResetCard();
-            hand[i].GetComponent<Renderer>().enabled = false;
+            hand[i].GetComponent<Image>().enabled = false;
         }
         cardIndex = 0;
         handValue = 0;
