@@ -7,7 +7,7 @@ public class DeckScript : MonoBehaviour
 {
     public Sprite[] cardSprites;
     int[] cardValues = new int[53];
-    int currentIndex = 0;
+    public int currentIndex = 0;
 
     void Start()
     {
@@ -52,8 +52,11 @@ public class DeckScript : MonoBehaviour
 
     public int DealCard(CardScript cardScript)
     {
+        
         cardScript.SetSprite(cardSprites[currentIndex]);
         cardScript.SetValue(cardValues[currentIndex]);
+        //Debug.Log($"индекс : {currentIndex} && значение : {cardScript.value} && имя спрайта: {cardSprites[currentIndex]}");
+       
         currentIndex++;
         return cardScript.GetValueOfCard();
     }

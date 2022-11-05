@@ -169,7 +169,10 @@ public class GameTimeLine : MonoBehaviour
             }
            
             standBtn.interactable = true;
-            //StandClicked();
+            if (standClicks == 1)
+            {
+                StandClicked();
+            }
         }
     }
 
@@ -252,7 +255,8 @@ public class GameTimeLine : MonoBehaviour
         playerBet = int.Parse(newBet.text.ToString().Remove(0, 1));
         OnBet?.Invoke();
        
-        if (playerBet <= playerScript.GetMoney() &&  0 < playerScript.GetMoney() 
+        if (playerBet <= playerScript.GetMoney() 
+            &&  0 < playerScript.GetMoney() 
             && (totalBet/2) <= maxBet)
         {
             playerScript.AdjustMoney(-playerBet);
