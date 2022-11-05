@@ -13,6 +13,10 @@ public class CardScript : MonoBehaviour
     {
         return value;
     }
+    public CardScript GetCard()
+    {
+        return this;
+    }
 
     public void SetValue(int newValue)
     {

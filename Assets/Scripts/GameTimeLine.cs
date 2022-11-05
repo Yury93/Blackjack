@@ -96,7 +96,7 @@ public class GameTimeLine : MonoBehaviour
                 dealerScoreText.text = "DEALER'S PAW: " + dealerScript.handValue.ToString();
             }
             // Place card back on dealer card, hide card
-            hideCard.GetComponent<Image>().enabled = true;
+            SetActiveHideCard(true);
             // Adjust buttons visibility
             dealBtn.gameObject.SetActive(false);
             hitBtn.gameObject.SetActive(true);
@@ -105,6 +105,21 @@ public class GameTimeLine : MonoBehaviour
             PlaceBet();
         }
         //dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
+    }
+    public bool SetActiveHideCard( bool enabl)
+    {
+        if (enabl)
+        {
+            dealerScript.hand[0].GetComponent<Image>().enabled = false;
+            hideCard.GetComponent<Image>().enabled = true;
+            return true;
+        }
+        else
+        {
+            dealerScript.hand[0].GetComponent<Image>().enabled = true;
+            hideCard.GetComponent<Image>().enabled = false;
+            return false;
+        }
     }
     public void PlaceBet()
     {
@@ -156,7 +171,7 @@ public class GameTimeLine : MonoBehaviour
                 if (hideCard.GetComponent<Image>().enabled)
                 {
                     yield return new WaitForSeconds(0.5f);
-                    hideCard.GetComponent<Image>().enabled = false;
+                    SetActiveHideCard(false);
                 }
                 yield return new WaitForSeconds(0.5f);
                 dealerScript.GetCard();
@@ -228,7 +243,7 @@ public class GameTimeLine : MonoBehaviour
             dealBtn.gameObject.SetActive(true);
             mainText.gameObject.SetActive(true);
             dealerScoreText.gameObject.SetActive(true);
-            hideCard.GetComponent<Image>().enabled = false;
+            SetActiveHideCard(false);
             standClicks = 0;
             playerBet = 0;
             totalBet = 0;
@@ -302,7 +317,7 @@ public class GameTimeLine : MonoBehaviour
             if(i<=1)
             dealerScript.hand[i].GetComponent<Image>().enabled = true;
         }
-        hideCard.GetComponent<Image>().enabled = true;
+        SetActiveHideCard(true);
         scoreText.text = "PLAYER'S PAW: " + 0;
         dealerScoreText.text = "DEALER'S PAW: " + 0;
         yield return new WaitForSeconds(0.5f);
