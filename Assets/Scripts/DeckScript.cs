@@ -8,7 +8,7 @@ public class DeckScript : MonoBehaviour
     public Sprite[] cardSprites;
     int[] cardValues = new int[53];
     public int currentIndex = 0;
-
+    private const string joker= "cardJoker";   
     void Start()
     {
         GetCardValues();
@@ -52,13 +52,22 @@ public class DeckScript : MonoBehaviour
 
     public int DealCard(CardScript cardScript)
     {
-        
+        BypassJokerCard(cardScript);
+
         cardScript.SetSprite(cardSprites[currentIndex]);
         cardScript.SetValue(cardValues[currentIndex]);
-        //Debug.Log($"индекс : {currentIndex} && значение : {cardScript.value} && имя спрайта: {cardSprites[currentIndex]}");
-       
+
         currentIndex++;
         return cardScript.GetValueOfCard();
+    }
+
+    private void BypassJokerCard(CardScript cardScript)
+    {
+        if (cardSprites[currentIndex].name == joker)
+        {
+            Debug.Log($"индекс : {currentIndex} && значение : {cardScript.value} && имя спрайта: {cardSprites[currentIndex].name}");
+            currentIndex++;
+        }
     }
 
     public Sprite GetCardBack()
