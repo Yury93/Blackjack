@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -21,8 +22,8 @@ public class GameTimeLine : MonoBehaviour
     public PlayerScript dealerScript;
 
     // public Text to access and update - hud
-    public Text scoreText;
-    public Text dealerScoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI dealerScoreText;
     public Text betsText;
     public Text cashText;
     public Text mainText;
