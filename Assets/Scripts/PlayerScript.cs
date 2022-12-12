@@ -45,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         // Get a card, use deal card to assign sprite and value to card on table
         int cardValue = deckScript.DealCard(hand[cardIndex].GetComponent<CardScript>());
         // Show card on game screen
-        hand[cardIndex].GetComponent<Image>().enabled = true;
+        hand[cardIndex].gameObject.SetActive(true);
         // Add card value to running total of the hand
         handValue += cardValue;
         // If value is 1, it is an ace
@@ -97,7 +97,7 @@ public class PlayerScript : MonoBehaviour
         for(int i = 0; i < hand.Length; i++)
         {
             hand[i].GetComponent<CardScript>().ResetCard();
-            hand[i].GetComponent<Image>().enabled = false;
+            hand[i].gameObject.SetActive(false);
         }
         cardIndex = 0;
         handValue = 0;
