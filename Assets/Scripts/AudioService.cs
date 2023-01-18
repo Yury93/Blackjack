@@ -18,19 +18,31 @@ public class AudioService : MonoBehaviour
     [SerializeField] private Button buttonAudioActive;
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         Initialized();
+       
+
         buttonAudioActive.onClick.AddListener(AudioHandlerEnabled);
     }
     public void AudioHandlerEnabled()
     {
-        if(audioListener.enabled)
+        if (bg.enabled)
         {
-            audioListener.enabled = false;
+            button.enabled = false;
+                button2.enabled = false;
+            button3.enabled = false;
+            gameEventsTimeLine.enabled = false;
+            bg.enabled = false;
+
             buttonAudioActive.GetComponent<Image>().sprite = iconAudioOffEnabled;
         }
         else
         {
-            audioListener.enabled = true;
+            button.enabled = true;
+            button2.enabled = true;
+            button3.enabled = true;
+            gameEventsTimeLine.enabled = true;
+            bg.enabled = true;
             buttonAudioActive.GetComponent<Image>().sprite = iconAudioOnEnabled;
         }
     }
@@ -54,15 +66,18 @@ public class AudioService : MonoBehaviour
         betAudio = setting.betAudio;
         drawAudio = setting.drawAudio; 
         emptyBalanceAudio = setting.emptyBalanceAudio;
-
-        gameTimeLine.OnBet += OnBet;
-        gameTimeLine.OnDeal += OnDeal;
-        gameTimeLine.OnHit += OnHit;
-        gameTimeLine.OnStend += OnStend;
-        gameTimeLine.OnDraw += OnDraw;
-        gameTimeLine.OnEmptyBalance += OnEmptyBalance;
-        gameTimeLine.OnLose += OnLose;
-        gameTimeLine.OnWin += OnWin;
+        gameTimeLine = FindObjectOfType<GameTimeLine>();
+        if (gameTimeLine)
+        {
+            gameTimeLine.OnBet += OnBet;
+            gameTimeLine.OnDeal += OnDeal;
+            gameTimeLine.OnHit += OnHit;
+            gameTimeLine.OnStend += OnStend;
+            gameTimeLine.OnDraw += OnDraw;
+            gameTimeLine.OnEmptyBalance += OnEmptyBalance;
+            gameTimeLine.OnLose += OnLose;
+            gameTimeLine.OnWin += OnWin;
+        }
     }
 
     private void OnWin()
@@ -123,13 +138,16 @@ public class AudioService : MonoBehaviour
     }
     private void OnDestroy()
     {
-        gameTimeLine.OnBet -= OnBet;
-        gameTimeLine.OnDeal -= OnDeal;
-        gameTimeLine.OnHit -= OnHit;
-        gameTimeLine.OnStend -= OnStend;
-        gameTimeLine.OnDraw -= OnDraw;
-        gameTimeLine.OnEmptyBalance -= OnEmptyBalance;
-        gameTimeLine.OnLose -= OnLose;
-        gameTimeLine.OnWin -= OnWin;
+        if (gameTimeLine)
+        {
+            gameTimeLine.OnBet -= OnBet;
+            gameTimeLine.OnDeal -= OnDeal;
+            gameTimeLine.OnHit -= OnHit;
+            gameTimeLine.OnStend -= OnStend;
+            gameTimeLine.OnDraw -= OnDraw;
+            gameTimeLine.OnEmptyBalance -= OnEmptyBalance;
+            gameTimeLine.OnLose -= OnLose;
+            gameTimeLine.OnWin -= OnWin;
+        }
     }
 }
