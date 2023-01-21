@@ -16,9 +16,18 @@ public class AudioService : MonoBehaviour
     [SerializeField] private AudioListener audioListener;
     [SerializeField] private Sprite iconAudioOnEnabled, iconAudioOffEnabled;
     [SerializeField] private Button buttonAudioActive;
+    public static AudioService instance;
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        var audioServices = FindObjectsOfType<AudioService>();
+
+        if(audioServices.Length > 1)
+        {
+            Destroy(audioServices[1].gameObject);
+        }
+      
         Initialized();
        
 

@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogWindow: {fileID: 4943149393924134190}
-  url: 
+  goTo: https://www.coolcatsmap.xyz
   buttonYes: {fileID: 4943149395601057332}
   buttonNo: {fileID: 4943149395494869440}
   buttonBack: {fileID: 4943149395740426386}
@@ -299,6 +299,7 @@ MonoBehaviour:
   target2: {fileID: 4943149395702835191}
   target3: {fileID: 4943149394528454418}
   targetButtonBack: {fileID: 4943149395027911755}
+  menu: 0
 --- !u!1 &4943149394262532039
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,8 +735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 229, y: -119}
-  m_SizeDelta: {x: 336, y: 124}
+  m_AnchoredPosition: {x: 156, y: -119}
+  m_SizeDelta: {x: 227.7194, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4943149395027911754
 CanvasRenderer:
@@ -777,10 +778,10 @@ RectTransform:
   m_Father: {fileID: 4943149395740426387}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.093, y: 0.27400002}
-  m_AnchorMax: {x: 0.88600004, y: 0.8225485}
-  m_AnchoredPosition: {x: 25.64701, y: -2.112503}
-  m_SizeDelta: {x: -51.294, y: -109.5151}
+  m_AnchorMin: {x: 0.122411765, y: 0.41218424}
+  m_AnchorMax: {x: 0.76500005, y: 0.5856843}
+  m_AnchoredPosition: {x: 3, y: 0}
+  m_SizeDelta: {x: -5.2939987, y: 4.4849014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4943149395193987352
 CanvasRenderer:
@@ -1341,7 +1342,7 @@ RectTransform:
   m_GameObject: {fileID: 4943149395740426384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.66107, y: 0.66107, z: 0.66107}
   m_Children:
   - {fileID: 4943149395193987334}
   m_Father: {fileID: 4943149393931816407}
@@ -1380,7 +1381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b4dcf1e60b55264f8fe6bba49568b1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 792e0c978f6a7fa428b32d546aeabb33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

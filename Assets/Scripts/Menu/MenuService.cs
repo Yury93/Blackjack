@@ -41,5 +41,6 @@ public class MenuService : MonoBehaviour
         urlSelector.OnActiveUrlSelector -= RefreshStateButtonMenu;
         SceneManager.LoadSceneAsync(sceneName);
     }
+
    
 }

@@ -35,18 +35,20 @@ public class GameTimeLine : MonoBehaviour
     // How much is bet
     [SerializeField] private TimeLineSetting timeLineSetting;
     public TimeLineSetting GetSettings => timeLineSetting;
-    private int totalBet;
+    public int totalBet;
+   
     private int playerBet;
     private int maxBet;
-    private bool bet;
+    public bool bet;
     private float timeActive_mainText;
     //Animations button
-    private ButtonAnimator betBtnAnimator;
+   public  ButtonAnimator betBtnAnimator;
     public Action OnDeal, OnHit, OnStend, OnWin, OnLose, OnBet, OnDraw, OnEmptyBalance;
     [SerializeField] private CardScript cardDealer1;
-
+    public static GameTimeLine instance;
     private void Start()
     {
+        instance = this;
         //timelineSettings
         totalBet = timeLineSetting.totalBet;
         playerBet = timeLineSetting.playerBet;
@@ -85,16 +87,16 @@ public class GameTimeLine : MonoBehaviour
             playerScript.StartHand();
             dealerScript.StartHand();
             // Update the scores displayed
-            scoreText.text = "PLAYER'S PAW: " + playerScript.handValue.ToString();
-            dealerScoreText.text = "Paw: " + dealerScript.handValue.ToString();
+            scoreText.text = /*"PLAYER'S PAW: " +*/ playerScript.handValue.ToString();
+            dealerScoreText.text = /*"Paw: "*/  dealerScript.handValue.ToString();
 
             if (hideCard.gameObject.activeSelf)
             {
-                dealerScoreText.text = "DEALER'S PAW: " + (dealerScript.handValue - cardDealer1.value).ToString();
+                dealerScoreText.text =/* "DEALER'S PAW: " +*/ (dealerScript.handValue - cardDealer1.value).ToString();
             }
             else
             {
-                dealerScoreText.text = "DEALER'S PAW: " + dealerScript.handValue.ToString();
+                dealerScoreText.text = /*"DEALER'S PAW: " +*/ dealerScript.handValue.ToString();
             }
             // Place card back on dealer card, hide card
             SetActiveHideCard(true);
@@ -143,7 +145,7 @@ public class GameTimeLine : MonoBehaviour
         {
             OnHit?.Invoke();
             playerScript.GetCard();
-            scoreText.text = "PLAYER'S PAW: " + playerScript.handValue.ToString();
+            scoreText.text = /*"PLAYER'S PAW: " +*/ playerScript.handValue.ToString();
             if (playerScript.handValue > 20) RoundOver();
         }
     }
@@ -177,7 +179,7 @@ public class GameTimeLine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 dealerScript.GetCard();
                 
-                dealerScoreText.text = "DEALER'S PAW: " + dealerScript.handValue.ToString();
+                dealerScoreText.text = /*"DEALER'S PAW: " +*/ dealerScript.handValue.ToString();
                 if (dealerScript.handValue > 20)
                 {
                     RoundOver();
@@ -235,7 +237,7 @@ public class GameTimeLine : MonoBehaviour
         //    roundOver = false;
         //}
         // Set ui up for next move / hand / turn
-        dealerScoreText.text = "DEALER'S PAW: " + dealerScript.handValue.ToString();
+        dealerScoreText.text = /*"DEALER'S PAW: " + */dealerScript.handValue.ToString();
         if (roundOver)
         {
 
@@ -319,8 +321,8 @@ public class GameTimeLine : MonoBehaviour
             dealerScript.hand[i].gameObject.SetActive(true);
         }
         SetActiveHideCard(true);
-        scoreText.text = "PLAYER'S PAW: " + 0;
-        dealerScoreText.text = "DEALER'S PAW: " + 0;
+        scoreText.text = /*"PLAYER'S PAW: " +*/ 0.ToString();
+        dealerScoreText.text = /*"PLAYER'S PAW: " +*/ 0.ToString();
         yield return new WaitForSeconds(0.5f);
         betBtnAnimator.ButtonEnable();
        
