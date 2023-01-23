@@ -69,10 +69,6 @@
     <Compile Include="Assets\Scripts\ButtonBlocker.cs" />
     <Compile Include="Assets\Scripts\TimeLineSetting.cs" />
     <Compile Include="Assets\Scripts\Menu\UrlSelector.cs" />
-    <Compile Include="Assets\ButtonSound.cs" />
-    <Compile Include="Assets\SoundCreator.cs" />
-    <Compile Include="Assets\Clip.cs" />
-    <Compile Include="Assets\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

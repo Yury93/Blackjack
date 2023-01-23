@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioService : MonoBehaviour
@@ -13,26 +14,39 @@ public class AudioService : MonoBehaviour
          winAudio, loseAudio, betAudio, drawAudio, emptyBalanceAudio;
 
      [SerializeField] AudioSource button, button2, button3, gameEventsTimeLine, bg;
-    [SerializeField] private AudioListener audioListener;
     [SerializeField] private Sprite iconAudioOnEnabled, iconAudioOffEnabled;
     [SerializeField] private Button buttonAudioActive;
     public static AudioService instance;
+    private MenuService menuService;
     private void Awake()
     {
         instance = this;
-            DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
         var audioServices = FindObjectsOfType<AudioService>();
 
-        if(audioServices.Length > 1)
+        if (audioServices.Length > 1)
         {
             Destroy(audioServices[1].gameObject);
-        }
-      
-        Initialized();
-       
 
-        buttonAudioActive.onClick.AddListener(AudioHandlerEnabled);
+        }
+
+        Initialized();
+
+        if (SceneManager.GetActiveScene().name != "Game")
+        {
+             menuService = FindObjectOfType<MenuService>();
+            buttonAudioActive.onClick.AddListener(AudioHandlerEnabled);
+        }
     }
+   
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "Game")
+        {
+            Initialized();
+        }
+    }
+
     public void AudioHandlerEnabled()
     {
         if (bg.enabled)
@@ -44,6 +58,7 @@ public class AudioService : MonoBehaviour
             bg.enabled = false;
 
             buttonAudioActive.GetComponent<Image>().sprite = iconAudioOffEnabled;
+            buttonAudioActive.image.color = Color.gray;
         }
         else
         {
@@ -53,6 +68,7 @@ public class AudioService : MonoBehaviour
             gameEventsTimeLine.enabled = true;
             bg.enabled = true;
             buttonAudioActive.GetComponent<Image>().sprite = iconAudioOnEnabled;
+            buttonAudioActive.image.color = Color.white;
         }
     }
     private void Start()
@@ -66,6 +82,7 @@ public class AudioService : MonoBehaviour
 
     public void Initialized()
     {
+        gameTimeLine = FindObjectOfType<GameTimeLine>();
         bgAudio = setting.bgAudio;
         dealAudio = setting.deal;
         hitAudio = setting.hitAudio;
@@ -75,7 +92,7 @@ public class AudioService : MonoBehaviour
         betAudio = setting.betAudio;
         drawAudio = setting.drawAudio; 
         emptyBalanceAudio = setting.emptyBalanceAudio;
-        gameTimeLine = FindObjectOfType<GameTimeLine>();
+  
         if (gameTimeLine)
         {
             gameTimeLine.OnBet += OnBet;

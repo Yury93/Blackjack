@@ -14,7 +14,8 @@ public class UrlSelector : MonoBehaviour
     [SerializeField] private Transform startPos1,startPos2,startPos3,target1, target2, target3, targetButtonBack;
     [SerializeField] private List<Button> otherButtons;
     [SerializeField] private Button betButton;
-    public bool menu;
+    [SerializeField] private AudioSource btnYesAudio, btnNoAudio, btnBackAudio;
+    public bool menu,activeSelf;
     private void Start()
     {
         //DontDestroyOnLoad(this.gameObject);
@@ -26,6 +27,7 @@ public class UrlSelector : MonoBehaviour
     public Action<bool> OnActiveUrlSelector;
     public void SetActiveDialogWindow(bool active)
     {
+        activeSelf = active;
         var btnYes =  buttonYes.GetComponent<RectTransform>();
         var btnNo = buttonNo.GetComponent<RectTransform>();
         if (active)
@@ -37,14 +39,13 @@ public class UrlSelector : MonoBehaviour
             otherButtons.ForEach(b => b.interactable = false);
             if (betButton != null)
             {
-                if (GameTimeLine.instance.totalBet == 0 && GameTimeLine.instance.bet == false)
+                if (GameTimeLine.instance.totalBet == 0 && GameTimeLine.instance.bet == false
+                    && GameTimeLine.instance.betBtnAnimator.enabledButton == true)
                 {
                     GameTimeLine.instance.betBtnAnimator.ButtonDisabled();
                 }
-                else
-                {
-                    betButton.enabled = false;
-                }
+              
+                betButton.GetComponent<Image>().raycastTarget = false;
             }
         }
         else
@@ -52,18 +53,18 @@ public class UrlSelector : MonoBehaviour
             dialogWindow.transform.DOMoveY(startPos1.transform.position.y, 1);
             buttonYes.transform.DOMoveY(startPos2.transform.position.y, 1.5f);
             buttonNo.transform.DOMoveY(startPos3.transform.position.y, 1.5f);
+            btnNoAudio.Play();
             buttonBack.interactable = true;
             otherButtons.ForEach(b => b.interactable = true);
             if (betButton != null)
             {
-                if (GameTimeLine.instance.totalBet == 0 && GameTimeLine.instance.bet == false)
+                if (GameTimeLine.instance.totalBet == 0 && GameTimeLine.instance.bet == false
+                    && GameTimeLine.instance.betBtnAnimator.enabledButton == false)
                 {
                     GameTimeLine.instance.betBtnAnimator.ButtonEnable(); 
                 }
-                else
-                {
-                    betButton.enabled = true;
-                }
+          
+                betButton.GetComponent<Image>().raycastTarget = true;
             }
         }
         OnActiveUrlSelector?.Invoke(active);
@@ -71,6 +72,7 @@ public class UrlSelector : MonoBehaviour
     private void GoToUrlSelector()
     {
         SetActiveDialogWindow(true);
+        btnBackAudio.Play();
     }
     public void GoToLink()
     {
@@ -78,6 +80,8 @@ public class UrlSelector : MonoBehaviour
             Application.OpenURL(goTo);
         else
             SceneManager.LoadScene(goTo);
+
+        btnYesAudio.Play();
     }
    
 }

@@ -9,6 +9,7 @@ public class ButtonAnimator
     private string enableState = "Enable";
     private string disableState = "Disable";
     public Button GetButton { get; private set; }
+    public bool enabledButton;
     public ButtonAnimator(Button button)
     {
         GetButton = button;
@@ -16,11 +17,13 @@ public class ButtonAnimator
     }
     public void ButtonEnable()
     {
-        animator.SetTrigger(enableState);
-        GetButton.interactable = true;
+            enabledButton = true;
+            animator.SetTrigger(enableState);
+            GetButton.interactable = true;
     }
     public void ButtonDisabled()
     {
+        enabledButton = false;
         animator.SetTrigger(disableState);
         GetButton.interactable = false;
     }

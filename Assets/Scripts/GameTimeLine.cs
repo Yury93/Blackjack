@@ -129,7 +129,7 @@ public class GameTimeLine : MonoBehaviour
         if (playerBet <= playerScript.GetMoney() && 0 < playerScript.GetMoney() && (totalBet / 2) <= maxBet)
         {
             //totalBet = totalBet * 2;
-            betsText.text = " $" + totalBet.ToString();//bet txt
+            betsText.text = " $" + (totalBet / 2).ToString();//bet txt
             dealerScript.AdjustMoney(-(playerBet));
             print(playerBet);
             cashText.text = "$" + playerScript.GetMoney().ToString();
@@ -253,7 +253,7 @@ public class GameTimeLine : MonoBehaviour
             bet = false;
             print("Конец раунда");
             cashText.text = "$" + playerScript.GetMoney().ToString();
-            betsText.text = " $" + totalBet.ToString();//bet txt
+            betsText.text = " $" + (totalBet / 2).ToString();//bet txt
             cashText.text = "$" + playerScript.GetMoney().ToString();
             ButtonBlocker.ButtonSetActive(bet, standBtn, hitBtn, dealBtn);
             
@@ -281,7 +281,7 @@ public class GameTimeLine : MonoBehaviour
            
             cashText.text = "$" + playerScript.GetMoney().ToString();
             totalBet += (playerBet * 2);
-            betsText.text = " $" + totalBet.ToString();//bet txt
+            betsText.text = " $" + (totalBet/2).ToString();//bet txt
             bet = true;
 
             ButtonBlocker.ButtonSetActive(true,dealBtn);
@@ -323,7 +323,9 @@ public class GameTimeLine : MonoBehaviour
         SetActiveHideCard(true);
         scoreText.text = /*"PLAYER'S PAW: " +*/ 0.ToString();
         dealerScoreText.text = /*"PLAYER'S PAW: " +*/ 0.ToString();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(1f);
+        var selctor = FindObjectOfType<UrlSelector>();
+        if(selctor.activeSelf == false)
         betBtnAnimator.ButtonEnable();
        
     }

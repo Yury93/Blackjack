@@ -9,10 +9,11 @@ using UnityEngine.UI;
 public class MenuService : MonoBehaviour
 {
     [SerializeField] private string sceneName,urlCoolCats;
-    [SerializeField] private Button buttonStartGame;
-    [SerializeField] private RectTransform targetButtonStart, targetButtonBack;
+    [SerializeField] private Button buttonStartGame,buttonScoreInfo;
+    [SerializeField] private RectTransform targetButtonStart, targetButtonBack,targetButtonScore;
     [SerializeField] private UrlSelector urlSelector;
-   
+    [SerializeField] private AudioSource btnStartAudio;
+    public Action OnSceneLoad;
     private void Awake()
     {
         buttonStartGame.onClick.AddListener(StartGame);
@@ -23,6 +24,7 @@ public class MenuService : MonoBehaviour
     private void Start()
     {
         buttonStartGame.transform.DOMove(targetButtonStart.transform.position, 1f);
+        buttonScoreInfo.transform.DOMove(targetButtonScore.transform.position, 1f);
     }
     private void RefreshStateButtonMenu(bool disActive)
     {
@@ -33,14 +35,15 @@ public class MenuService : MonoBehaviour
     }
     private void StartGame()
     {
+        btnStartAudio.Play();
         StartCoroutine(CorStartGame());
     }
     private IEnumerator CorStartGame()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
         urlSelector.OnActiveUrlSelector -= RefreshStateButtonMenu;
+        OnSceneLoad?.Invoke();
         SceneManager.LoadSceneAsync(sceneName);
+     
     }
-
-   
 }

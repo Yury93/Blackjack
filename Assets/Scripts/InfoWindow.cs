@@ -10,6 +10,7 @@ public class InfoWindow : MonoBehaviour
     [SerializeField] private Transform infoRulesGame;
     [SerializeField] private Text title;
     [SerializeField] private Text rules;
+    [SerializeField] private AudioSource btnScoreAudio;
     private bool infoRead;
 
     private void Awake()
@@ -22,16 +23,20 @@ public class InfoWindow : MonoBehaviour
     {
         if (infoRead)
         {
-            infoRulesGame.gameObject.SetActive(false);
-            Time.timeScale = 1F;
-            infoRead = false;
+            Close();
         }
         else
         {
             infoRulesGame.gameObject.SetActive(true);
-            Time.timeScale = 0.0001F;
+   
             infoRead = true;
         }
+        btnScoreAudio.Play();
+    }
+    public void Close()
+    {
+        infoRulesGame.gameObject.SetActive(false);
+        infoRead = false;
     }
 
 }
